@@ -15,7 +15,7 @@ class App extends Component {
   };
 
   async componentDidUpdate(_, prevState) {
-    const { searchQuery, page, images, loaded } = this.state;
+    const { searchQuery, page } = this.state;
 
     if (prevState.searchQuery !== searchQuery || prevState.page !== page)
       try {
@@ -42,8 +42,6 @@ class App extends Component {
   };
 
   onLoadMoreImages = () => {
-    const { page } = this.state;
-
     this.setState(prevState => ({ page: prevState.page + 1 }));
   };
 
