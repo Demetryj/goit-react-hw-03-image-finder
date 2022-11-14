@@ -1,11 +1,22 @@
-import { ImageGalleryItem } from '../ImageGalleryItem';
+import PropTypes from 'prop-types';
 
-export const ImageGallery = ({ imageItems }) => {
+import { ImageGalleryItem } from '../ImageGalleryItem';
+import css from './imageGallery.module.css';
+
+export const ImageGallery = ({ imageItems, ...otherProps }) => {
   return (
-    <ul className="gallery">
+    <ul className={css.imageGallery}>
       {imageItems.map(item => (
-        <ImageGalleryItem image={item} key={item.webformatURL} />
+        <ImageGalleryItem
+          image={item}
+          key={item.webformatURL}
+          {...otherProps}
+        />
       ))}
     </ul>
   );
+};
+
+ImageGallery.propTypes = {
+  imageItems: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
