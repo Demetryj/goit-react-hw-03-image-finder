@@ -12,5 +12,11 @@ export const fetchImages = async (query, page) => {
     },
   });
   const { hits } = response.data;
-  return hits;
+  const dataImages = hits.map(({ id, tags, webformatURL, largeImageURL }) => ({
+    id,
+    tags,
+    webformatURL,
+    largeImageURL,
+  }));
+  return dataImages;
 };
