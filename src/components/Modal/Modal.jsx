@@ -13,15 +13,13 @@ class Modal extends Component {
   };
 
   handleKeyDown = event => {
-    this.props.onCloseModal();
+    if (event.code === 'Escape') {
+      this.props.onCloseModal();
+    }
   };
 
   componentDidMount() {
-    window.addEventListener('keydown', event => {
-      if (event.code === 'Escape') {
-        this.handleKeyDown();
-      }
-    });
+    window.addEventListener('keydown', this.handleKeyDown);
   }
 
   componentWillUnmount() {
