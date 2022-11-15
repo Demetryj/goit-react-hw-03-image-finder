@@ -84,6 +84,14 @@ class App extends Component {
       <div className={css.app}>
         <Searchbar handleSubmit={this.getSearchQuery} />
 
+        {searchQuery && (
+          <ImageGallery
+            imageItems={images}
+            onModal={this.openModal}
+            onHandleModal={this.handleModal}
+          />
+        )}
+
         {loaded && (
           <ThreeDots
             height="80"
@@ -96,13 +104,6 @@ class App extends Component {
           />
         )}
 
-        {searchQuery && (
-          <ImageGallery
-            imageItems={images}
-            onModal={this.openModal}
-            onHandleModal={this.handleModal}
-          />
-        )}
         {images.length > 0 && !loaded && (
           <Button handleClickLoadMore={this.onLoadMoreImages}>Load more</Button>
         )}
